@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>要素の取得と内容の変更</title>
+<style>
+    h3{
+        font-size:30px;
+}
+    div1{
+        font-weight: bold;
+        color: red;
+}
+    div2{
+        font-weight: bold;
+}
+</style>
+</head>
+<body>
+<h3>座席の予約</h3>
+<p1>東京会場</p1><div1 id = "message1">（予約受付中）</div1><br>
+<div2 id = "messege2"><button onclick="res();">予約する</button></div2>
+<script>
+function res(){
+    let ok1 = document.getElementById('message1').innerText = "（予約済み）"
+    let ok2 = document.getElementById('messege2').innerText = "ありがとうございました。"
+}
+</script>
+</body>
+</html>
