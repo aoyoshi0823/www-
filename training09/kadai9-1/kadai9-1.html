@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>要素の追加の削除</title>
+<style>
+    #photos {
+        width: 750px;
+    }    
+</style>
+</head>
+
+<body>
+    <h1>写真の一覧</h1>
+    <p>以下のボタンをクリックすると、写真が一覧表示されます。</p>
+    <div id="photos"></div>
+    <button id="button" onclick="get_div()">写真を表示</button>
+    
+</body>
+<script>
+    let photos = document.getElementById('photos');
+    function get_div() {
+        var name = [
+            "./photo_1.jpg",
+            "./photo_2.jpg",
+            "./photo_3.jpg",
+            "./photo_4.jpg",
+            "./photo_5.jpg",
+            "./photo_6.jpg",
+            "./photo_7.jpg",
+            "./photo_8.jpg",
+            "./photo_9.jpg"
+        ] 
+        var N = name.length
+        var text = "";
+        for(var i = 0; i < N ; i++){
+        console.log(photos);
+        text += '<img src=' + name[i] + '>';
+        window.onload = function () {
+        document.getElementById("table").innerHTML = text; 
+        // photos.innerHTML += '<img src="./photo_2.jpg" alt="">' 
+        // photos.innerHTML += '<img src="./photo_3.jpg" alt="">' 
+        // photos.innerHTML += '<img src="./photo_4.jpg" alt="">' 
+        // photos.innerHTML += '<img src="./photo_5.jpg" alt="">' 
+        // photos.innerHTML += '<img src="./photo_6.jpg" alt="">' 
+        // photos.innerHTML += '<img src="./photo_7.jpg" alt="">' 
+        // photos.innerHTML += '<img src="./photo_8.jpg" alt="">' 
+        // photos.innerHTML += '<img src="./photo_9.jpg" alt="">' 
+        let button = document.getElementById('button');
+        button.remove();
+    }
+        }
+            }
+</script>
+</html>
