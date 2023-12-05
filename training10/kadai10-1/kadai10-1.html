@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件分岐</title>
+</head>
+<body>
+    <h3>問題</h3>
+    <p>もっとも面積が大きい「県」は何県でしょう？</p>
+    <button id="btn" onclick="show()">ヒント</button>
+    <p id="name">（注意）北海道は「県」ではありません。</p>
+
+    <script>
+        const number = document.querySelector('#name');
+        const plusButton = document.querySelector('button');
+
+        let count = 0;
+
+        plusButton.addEventListener('click', () => {
+            count ++; 
+            // number.innerHTML = count;
+            if(count == 1){
+                number.innerHTML = "東北地方にあります。"
+                btn.textContent = '答えを見る'
+            }else{
+                number.innerHTML = "答えは「岩手県です」。"
+            }
+        });
+        // let cllckTimes = 0;
+        // const number = document.querySelector('p');
+        // const plusButton = document.querySelector('button');
+        // function show() {
+        //     clickTimes++;
+        //     switch(clickTimes) {
+        //     case 1:
+        //         alert('[ヒント]北海道は「県」ではありません。');
+        //         break;
+        //     case 2:
+        //         alert('[ヒント]東北地方にあります。');
+        //         break;
+        //         default:
+        //         alert('答えは「岩手県です」。');
+        //     }
+        // }
+    </script>
+</body>
+</html>
