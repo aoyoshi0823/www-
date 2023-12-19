@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>関数の戻り値</title>
+    <style>
+        #message {
+            width: 500px;
+            padding: 15px;
+            margin: 25px 0px;
+            background-color: #FFCC99;
+        }
+    </style>
+</head>
+<body>
+    <h1>1～10で割り切れる数字</h1>
+    <p>1、2、3、4、5、6、7、8、9、10で割り切れ最小の数値をJavaScriptで求めます。</p>
+    <button onclick="shwo()">結果を見る</button>
+    <div id="message">ここに結果が表示されます。</div>
+
+    <script>
+         // 最大公約数を求める
+         function shwo() {
+            var a = arguments;
+            var g = (n, m) => m ? g(m, n % m) : n;
+            var l = (n, m) => n * m / g(n, m);
+            var ans = a[0];
+
+                for (var i = 1; i < a.length; i++) {
+                    ans = l(ans, a[i]);
+                }
+                return ans;
+            }
+
+            console.log(shwo(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+    </script>
+</body>
+</html>
