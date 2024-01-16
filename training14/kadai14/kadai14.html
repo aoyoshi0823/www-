@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Typing Game</title>
+    <style>
+      body {
+        padding-top: 40px;
+        font-family: 'Courier New', Courier, monospace;
+        text-align: center;
+      }
+
+      #target {
+        font-size: 50px;
+        letter-spacing: 30px;
+      }
+
+      .info {
+        color: #eb0c0c;
+      }
+    </style>
+    
+</head>
+<body>  
+  <p id="target">click to start</p>
+   <p class="info">
+      Letter count: <span id="score">0</span>
+      Miss count: <span id="miss">0</span>
+      Time left: <span id="timer">0</span>
+   </p>
+
+  <script>
+      const words = [
+    'aoyama','nakagawa','simizu','takadono','tutida','ukai','tezuka','horibe','hayasi','yuse'
+];
+let word = words[Math.floor(Math.random() * words.length)];
+
+let loc = 0;
+let score = 0;
+let miss = 0;
+const timeLimit = 100 * 1000;
+let startTime;
+
+const target = document.getElementById('target') ;
+const subtarget = document.getElementById('subtarget') ;
+const scoreLabel = document.getElementById('score') ;
+const missLabeel = document.getElementById('miss') ;
+const timerLabel = document.getElementById('timer');
+
+// target.textContent = word ;
+
+function updateTarget() {
+    let placeholder = '';
+    for(let i = 0; i < loc; i++) {
+        placeholder += '_';
+    }
+    target.textContent = placeholder + word.substring(loc);
+}
+function updateTimer() {
+    const timeLeft = startTime + timeLimit - Date.now();
+    timerLabel.textContent = (timeLeft / 1000).toFixed(2);
+
+    
+    const timeoutId = setTimeout( () => {
+        updateTimer();
+    }, 10);
+
+    if (timeLeft < 0) {
+        clearTimeout(timeoutId);
+        timerLabel.textContent = "0.00";
+        alert('Game over');
+        setTimeout(() => {
+            alert('Game Over');
+        }, 100);
+    }
+} ;
+
+window.addEventListener('click', () => {
+    updateTarget();
+    startTime = Date.now();
+    updateTimer();
+});
+
+    window.addEventListener("keyup", e => {
+        console.log(e.key);
+        if (e.key == word[loc]) {
+
+            console.log('score') ;
+            loc++ ;
+
+            if (loc === word.length) {
+                word = words[Math.floor(Math.random() * words.length)];
+                loc = 0;
+            }
+            score++ ;
+            scoreLabel.textContent = score ;
+            updateTarget() ;
+
+        } else {
+            console.log('miss') ;
+            miss++ ;
+            missLabeel.textContent = miss ;
+        }
+    });
+    </script>
+  </body>
+</html>
